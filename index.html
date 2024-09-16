@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amandinha, Eu Te Amo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
+                url('https://imgv2-1-f.scribdassets.com/img/document/54509925/original/3e6afd97db/1722104354?v=1');
+            /* URL direta da imagem */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #A020F0;
+            /* Cor do texto para contraste com o fundo */
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 1);
+            /* Cor de fundo semi-transparente */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 8px rgba(128, 0, 128);
+            max-width: 90%;
+            width: 90%;
+            box-sizing: border-box;
+            position: relative;
+            /* Adicionado para posicionamento do emoji */
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #A020F0;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        h3 {
+            font-size: 1em;
+        }
+
+        p {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            font-size: 2em;
+            color: #A020F0;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #A020F0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #8e00b1;
+            /* Cor do botão quando o mouse passa por cima */
+        }
+
+        .button-no {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: #A020F0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            /* Para ocultar qualquer conteúdo que saia da área do botão */
+            transition: background-color 0.3s;
+        }
+
+        /* Animação de flutuar aleatoriamente */
+        @keyframes flutuarAleatorio {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(200px, 100px);
+            }
+
+            50% {
+                transform: translate(-150px, -150px);
+            }
+
+            75% {
+                transform: translate(100px, -200px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .button-no {
+            animation: flutuarAleatorio 3s infinite;
+            /* Botão se movendo continuamente */
+        }
+
+        /* Efeito de mover o botão quando o mouse se aproxima */
+        .button-no:hover {
+            position: absolute;
+            top: calc(50% - 100px);
+            /* Movimenta para longe do mouse */
+            left: calc(50% - 200px);
+            transition: top 0.2s ease, left 0.2s ease;
+        }
+
+        /* Estilo para a frase em cinza claro */
+        .light-gray {
+            color: #D3D3D3;
+            /* Cinza claro */
+        }
+
+        /* Estilo para a caixa de diálogo de senha */
+        #password-dialog {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 8px rgba(128, 0, 128);
+            display: none;
+            /* Inicialmente escondida */
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        #password-dialog input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #password-dialog button {
+            padding: 10px 20px;
+            background-color: #A020F0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #password-dialog button:hover {
+            background-color: #8e00b1;
+        }
+
+        /* Estilo para a mão apontando */
+        .pointing-hand {
+            position: absolute;
+            font-size: 2.5em;
+            color: #A020F0;
+            top: 65%;
+            /* Ajuste a posição conforme necessário */
+            left: 30%;
+            transform: translateX(-50%);
+            animation: moverParaDireita 0.4s linear infinite;
+        }
+
+        /* Animação da mão se movendo para a direita */
+        @keyframes moverParaDireita {
+            0% {
+                left: 30%;
+            }
+            100% {
+                left: 32%;
+            }
+        }
+
+        /* Consultas de mídia para telas menores */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.7em;
+            }
+            br {
+                font-size: 0.7em;
+            }
+
+            p {
+                font-size: 0.8em;
+            }
+
+            .heart {
+                font-size: 1.8em;
+            }
+
+            .button,
+            .button-no {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .pointing-hand {
+                font-size: 1em;
+                top: 88.5%;
+            }
+        }
+    </style>
+</head>
+
+<body onload="showPasswordDialog()">
+    <div id="password-dialog">
+        <h1>Oi, Gatinha!</h1>
+        <p></p>
+        <h3>Pra entrar só com senha 😘</h3>
+        <p></p>
+        <h4>Pega essa dica: 🎁</h4>
+        <input type="password" id="password" placeholder="Escreve aqui, meu amor">
+        <button onclick="checkPassword()">Verifique a Senha</button>
+    </div>
+
+    <div class="container" id="content" style="display:none;">
+        <h2>📪 ISSO É UM CONVITE 📪</h2>
+        <h3>Para: Mi Regalito 🎁</h3>
+        <p>
+            <span class="heart">💜</span><br>
+            <p>
+            ENFIM, 18H!
+            <br><br>
+            Parabéns pelo seu primeiro dia de trabalho, meu amor!<br><br>
+            Isso é só o começo, o melhor está por vir! <br><br>
+            Quero aproveitar esse dia especial para, além de te parabenizar, te fazer um convite:
+        </p>
+        <h1>Aceita sair no sábado, às 18h, para um date romântico surpresa?👀</h1>
+        <span class="gray">(Prometo que voltamos cedinho)</span><br><br>
+        <a href="#A020F0" class="button" onclick="comemorar()">Sim!</a>
+        <button class="button-no" onclick="errado()">Não</button>
+        <!-- Mão apontando para o botão "Sim" -->
+        <div class="pointing-hand">👉</div>
+    </div>
+
+    <script>
+        const correctPassword = "miregalo"; // Substitua pela senha desejada
+
+        function showPasswordDialog() {
+            document.getElementById('password-dialog').style.display = 'block';
+        }
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            if (passwordInput === correctPassword) {
+                document.getElementById('password-dialog').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert('VAMO QUERER????? É só completar: mi ______');
+            }
+        }
+
+        function comemorar() {
+            alert('HEHEHE! Sabia que apertaria no SIM! 🎉💜');
+        }
+    </script>
